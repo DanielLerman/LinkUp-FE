@@ -1,10 +1,11 @@
 
-import React, { useEffect, useContext,useState,BrowserRouter, Routes, Route  } from "react";
+import React, { useEffect, useContext,useState } from "react";
+import {BrowserRouter, Routes, Route } from 'react-router-dom'
 import linkUpContext from "./context/context";
 import HomePage from "./pages/HomePage";
-import NavBar from "./CSS/NavBar";
-import HomePage from "./CSS/HomePage";
 import NavBar from "./components/NavBar";
+
+
 
 
 function App() {

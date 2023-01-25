@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './HomePage.css';
+import './styles/home.css';
+import'./styles/navBar.css';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 

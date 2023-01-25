@@ -2,8 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCog, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import logoLink from "../logo-link.png";
-
-import "./NavBar.css";
+import navBar from "../styles/navBar.css"
 
 export default function NavBar() {
   return (
