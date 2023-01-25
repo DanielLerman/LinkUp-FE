@@ -1,54 +1,71 @@
 import React, { useContext, useState } from "react";
 import linkUpContext from "../context/context.jsx";
 import axios from "axios";
-import "./SignUp.css"
+import "./SignUp.css";
 
+function SignUp({ onClose }) {
+  // const { user, setUser } = useContext(linkUpContext);
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+    username: "",
+    age: "",
+    diet: "",
+    drinks: "",
+    education: "",
+    job: "",
+    cats: "",
+    dogs: "",
+    religion: "",
+    ethnicity: "",
+    sex: "",
+    smokes: "",
+    languages: "",
+    confirmPassword: "",
+  });
 
-function SignUp({onClose}) {
-  const { user, setUser } = useContext(linkUpContext);
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [confirmPassword, setConfirmPassword] = useState("");
+  // const [username, setUsername] = useState("");
+  // const [age, setAge] = useState("");
+  // const [diet, setDiet] = useState("");
+  // const [drinks, setDrinks] = useState("");
+  // const [education, setEducation] = useState("");
+  // const [job, setJob] = useState("");
+  // const [cats, setCats] = useState("");
+  // const [dogs, setDogs] = useState("");
+  // const [religion, setReligion] = useState("");
+  // const [ethnicity, setEthnicity] = useState("");
+  // const [sex, setSex] = useState("");
+  // const [smokes, setSmokes] = useState("");
+  // const [languages, setLanguages] = useState("");
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [username, setUsername] = useState("");
-  const [age, setAge] = useState("");
-  const [diet, setDiet] = useState("");
-  const [drinks, setDrinks] = useState("");
-  const [education, setEducation] = useState("");
-  const [job, setJob] = useState("");
-  const [cats, setCats] = useState("");
-  const [dogs, setDogs] = useState("");
-  const [religion, setReligion] = useState("");
-const [ethnicity, setEthnicity] = useState("");
-const [sex, setSex] = useState("");
-const [smokes, setSmokes] = useState("");
-const [languages, setLanguages] = useState("");
-
- 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = {
-      email,
-      password,
-      username,
-      age,
-      diet,
-      drinks,
-      education,
-      job,
-      cats,
-      dogs,
-      religion,
-      ethnicity,
-      sex,
-      smokes,
-      languages,
-      confirmPassword,
-    };
+    // const data = {
+    //   email,
+    //   password,
+    //   username,
+    //   age,
+    //   diet,
+    //   drinks,
+    //   education,
+    //   job,
+    //   cats,
+    //   dogs,
+    //   religion,
+    //   ethnicity,
+    //   sex,
+    //   smokes,
+    //   languages,
+    //   confirmPassword,
+    // };
+    console.log(user);
     try {
       const response = await axios.post(
         "http://localhost:8080/user/signup",
-        data
+        user
       );
       if (response.status === 200) {
         alert("User created successfully");
@@ -69,20 +86,40 @@ const [languages, setLanguages] = useState("");
       <p>Create an account here</p>
       <label>
         Username:
-        <input type="text"  id="username" value={user.username} onChange={handleChange} />
+        <input
+          type="text"
+          id="username"
+          value={user.username}
+          onChange={handleChange}
+        />
       </label>
       <label>
         Email :
-        <input type="email" id="email" value={user.email} onChange={handleChange} />
+        <input
+          type="email"
+          id="email"
+          value={user.email}
+          onChange={handleChange}
+        />
       </label>
       <label>
         Age:
-        <input type="number" id="age" value={user.age} onChange={handleChange} />
+        <input
+          type="number"
+          id="age"
+          value={user.age}
+          onChange={handleChange}
+        />
       </label>
 
       <label>
         Password:
-        <input type="password" id="password" value={user.password} onChange={handleChange} />
+        <input
+          type="password"
+          id="password"
+          value={user.password}
+          onChange={handleChange}
+        />
       </label>
       <label>
         Confirm Password:
@@ -95,7 +132,7 @@ const [languages, setLanguages] = useState("");
       </label>
       <label htmlFor="diet">diet</label>
       <select id="diet" name="diet" onChange={handleChange}>
-        <option value="mostly anything">Mostly Anything</option>
+        <option value="anything">Mostly Anything</option>
         <option value="vegetarian">Vegetarian</option>
         <option value="vegan">Vegan</option>
         <option value="kosher">Kosher</option>
@@ -167,24 +204,24 @@ const [languages, setLanguages] = useState("");
         <option value="other">Other</option>
       </select>
       <label htmlFor="cats">Cats</label>
-      <select id="cats"  onChange={handleChange}>
+      <select id="cats" onChange={handleChange}>
         <option value="likes">Likes cats</option>
         <option value="dislikes">Dislikes cats</option>
         <option value="has">Has cats</option>
       </select>
       <label htmlFor="dogs">Dogs</label>
-      <select id="dogs"  onChange={handleChange}>
+      <select id="dogs" onChange={handleChange}>
         <option value="likes">Likes dogs</option>
         <option value="dislikes">Dislikes dogs</option>
         <option value="has">Has dogs</option>
       </select>
       <label htmlFor="sex">Sex</label>
-      <select id="sex"  onChange={handleChange}>
+      <select id="sex" onChange={handleChange}>
         <option value="f"> Female</option>
         <option value="m"> Male</option>
       </select>
       <label htmlFor="smokes">Smokes</label>
-      <select id="smokes"  onChange={handleChange}>
+      <select id="smokes" onChange={handleChange}>
         <option value="yes">Yes</option>
         <option value="no">No</option>
         <option value="sometimes">Sometimes</option>
@@ -192,7 +229,7 @@ const [languages, setLanguages] = useState("");
         <option value="when drinking">When drinking</option>
       </select>
       <label htmlFor="languages">Languages</label>
-      <select id="languages"  onChange={handleChange}>
+      <select id="languages" onChange={handleChange}>
         {[
           "English",
           "Afrikaans",
