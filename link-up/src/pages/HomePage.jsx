@@ -6,7 +6,7 @@ import UserCard from "../components/UserCard";
 const HomePage = () => {
   return (
     <Carousel className="home-page d-flex flex-column">
-    <Carousel.Item >
+    <Carousel.Item className="user-card d-flex flex-column ">
     <UserCard />
       {/* <Carousel.Caption>
         <h3>First slide label</h3>
