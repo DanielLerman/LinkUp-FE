@@ -1,52 +1,64 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import linkUpContext from "../context/context.jsx";
-// import axios from "axios";
+import axios from "axios";
+import "./SignUp.css"
 
-function SignUp() {
+
+function SignUp({onClose}) {
   const { user, setUser } = useContext(linkUpContext);
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [username, setUsername] = useState("");
+  const [age, setAge] = useState("");
+  const [diet, setDiet] = useState("");
+  const [drinks, setDrinks] = useState("");
+  const [education, setEducation] = useState("");
+  const [job, setJob] = useState("");
+  const [cats, setCats] = useState("");
+  const [dogs, setDogs] = useState("");
+  const [religion, setReligion] = useState("");
+const [ethnicity, setEthnicity] = useState("");
+const [sex, setSex] = useState("");
+const [smokes, setSmokes] = useState("");
+const [languages, setLanguages] = useState("");
+
+ 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // const data = {
-    //   email,
-    //   password,
-    //   username,
-    //   age,
-    //   diet,
-    //   drinks,
-    //   education,
-    //   job,
-    //   cats,
-    //   dogs,
-    //   religion,
-    //   ethnicity,
-    //   sex,
-    //   smokes,
-    //   languages,
-    //   confirmPassword,
-    // };
-    // if (password !== confirmPassword) {
-    //   alert("Passwords do not match");
-    //   return;
-    // }
-
-    // if (!password || !confirmPassword) {
-    //   alert("Please enter your password or confirm your password");
-    //   return;
-    // }
-    // try {
-    //   const response = await axios.post(
-    //     "http://localhost:8080//user/signup",
-    //     data
-    //   );
-    //   if (response.status === 200) {
-    //     alert("User created successfully");
-    //     setUser("");
-    //   }
-    // } catch (error) {
-    //   {
-    //     alert(error.response.data.error);
-    //   }
-    // }
+    const data = {
+      email,
+      password,
+      username,
+      age,
+      diet,
+      drinks,
+      education,
+      job,
+      cats,
+      dogs,
+      religion,
+      ethnicity,
+      sex,
+      smokes,
+      languages,
+      confirmPassword,
+    };
+    try {
+      const response = await axios.post(
+        "http://localhost:8080/user/signup",
+        data
+      );
+      if (response.status === 200) {
+        alert("User created successfully");
+        setUser("");
+      }
+    } catch (error) {
+      {
+        alert(error.response.data.error);
+      }
+    }
   };
 
   const handleChange = (event) => {
@@ -61,21 +73,22 @@ function SignUp() {
       </label>
       <label>
         Email :
-        <input type="email" value={user.email} onChange={handleChange} />
+        <input type="email" id="email" value={user.email} onChange={handleChange} />
       </label>
       <label>
         Age:
-        <input type="number" value={user.age} onChange={handleChange} />
+        <input type="number" id="age" value={user.age} onChange={handleChange} />
       </label>
 
       <label>
         Password:
-        <input type="password" value={user.password} onChange={handleChange} />
+        <input type="password" id="password" value={user.password} onChange={handleChange} />
       </label>
       <label>
         Confirm Password:
         <input
           type="password"
+          id="confirmPassword"
           value={user.confirmPassword}
           onChange={handleChange}
         />
@@ -154,24 +167,24 @@ function SignUp() {
         <option value="other">Other</option>
       </select>
       <label htmlFor="cats">Cats</label>
-      <select id="cats" name="cats" onChange={handleChange}>
+      <select id="cats"  onChange={handleChange}>
         <option value="likes">Likes cats</option>
         <option value="dislikes">Dislikes cats</option>
         <option value="has">Has cats</option>
       </select>
       <label htmlFor="dogs">Dogs</label>
-      <select id="dogs" name="dogs" onChange={handleChange}>
+      <select id="dogs"  onChange={handleChange}>
         <option value="likes">Likes dogs</option>
         <option value="dislikes">Dislikes dogs</option>
         <option value="has">Has dogs</option>
       </select>
       <label htmlFor="sex">Sex</label>
-      <select id="sex" name="sex" onChange={handleChange}>
+      <select id="sex"  onChange={handleChange}>
         <option value="f"> Female</option>
         <option value="m"> Male</option>
       </select>
       <label htmlFor="smokes">Smokes</label>
-      <select id="smokes" name="smokes" onChange={handleChange}>
+      <select id="smokes"  onChange={handleChange}>
         <option value="yes">Yes</option>
         <option value="no">No</option>
         <option value="sometimes">Sometimes</option>
@@ -179,7 +192,7 @@ function SignUp() {
         <option value="when drinking">When drinking</option>
       </select>
       <label htmlFor="languages">Languages</label>
-      <select id="languages" name="languages" onChange={handleChange}>
+      <select id="languages"  onChange={handleChange}>
         {[
           "English",
           "Afrikaans",
@@ -263,9 +276,9 @@ function SignUp() {
       </select>
 
       <button type="submit">Sign Up</button>
-      {/* <button type="button" onClick={onClose}>
+      <button type="button" onClick={onClose}>
         Cancel
-      </button> */}
+      </button>
     </form>
   );
 }
