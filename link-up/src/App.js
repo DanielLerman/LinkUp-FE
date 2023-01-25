@@ -1,6 +1,7 @@
 
 import React, { useEffect, useContext,useState } from "react";
 import linkUpContext from "./context/context";
+import HomePage from "./pages/HomePage";
 import { BrowserRouter, Routes, Route  } from "react-router-dom";
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
 
 
      <Routes>
+      <Route path="/" element={<HomePage/>}/>
       
        
      </Routes>
