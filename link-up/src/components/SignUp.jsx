@@ -1,67 +1,63 @@
 import React, { useContext } from "react";
-import { LinkUpContext } from "../context/context.jsx";
-import axios from "axios";
+import linkUpContext from "../context/context.jsx";
+// import axios from "axios";
 
 function SignUp() {
-  const { user, setUser } = useContext(LinkUpContext);
-  const navigate = useNavigate();
- 
-
- 
+  const { user, setUser } = useContext(linkUpContext);
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = {
-      email,
-      password,
-      username,
-      age,
-      diet,
-      drinks,
-      education,
-      job,
-      cats,
-      dogs,
-      religion,
-      ethnicity,
-      sex,
-      smokes,
-      languages,
-      confirmPassword,
-    };
-    if (password !== confirmPassword) {
-      alert("Passwords do not match");
-      return;
-    }
+    // const data = {
+    //   email,
+    //   password,
+    //   username,
+    //   age,
+    //   diet,
+    //   drinks,
+    //   education,
+    //   job,
+    //   cats,
+    //   dogs,
+    //   religion,
+    //   ethnicity,
+    //   sex,
+    //   smokes,
+    //   languages,
+    //   confirmPassword,
+    // };
+    // if (password !== confirmPassword) {
+    //   alert("Passwords do not match");
+    //   return;
+    // }
 
-    if (!password || !confirmPassword) {
-      alert("Please enter your password or confirm your password");
-      return;
-    }
-    try {
-      const response = await axios.post(
-        "http://localhost:8080//user/signup",
-        data
-      );
-      if (response.status === 200) {
-        alert("User created successfully");
-        setUser("");
-      }
-    } catch (error) {
-      {
-        alert(error.response.data.error);
-      }
-    }
+    // if (!password || !confirmPassword) {
+    //   alert("Please enter your password or confirm your password");
+    //   return;
+    // }
+    // try {
+    //   const response = await axios.post(
+    //     "http://localhost:8080//user/signup",
+    //     data
+    //   );
+    //   if (response.status === 200) {
+    //     alert("User created successfully");
+    //     setUser("");
+    //   }
+    // } catch (error) {
+    //   {
+    //     alert(error.response.data.error);
+    //   }
+    // }
   };
 
   const handleChange = (event) => {
-    setUser({ ...user, [event.target.name]: event.target.value });
+    setUser({ ...user, [event.target.id]: event.target.value });
   };
   return (
     <form onSubmit={handleSubmit}>
       <p>Create an account here</p>
       <label>
         Username:
-        <input type="text" value={user.username} onChange={handleChange} />
+        <input type="text"  id="username" value={user.username} onChange={handleChange} />
       </label>
       <label>
         Email :
@@ -267,9 +263,9 @@ function SignUp() {
       </select>
 
       <button type="submit">Sign Up</button>
-      <button type="button" onClick={onClose}>
+      {/* <button type="button" onClick={onClose}>
         Cancel
-      </button>
+      </button> */}
     </form>
   );
 }

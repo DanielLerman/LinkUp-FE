@@ -1,15 +1,20 @@
-import React, { useState, useContext, useEffect, useMemo } from "react";
+import React, {useContext} from "react";
 import { Modal } from "react-bootstrap";
-import SignUp from "./SignUp";
-import Login from "./Login";
+import SignUp from "../components/SignUp";
+import Login from "../components/Login";
 // import "./Modal.css";
-import { LinkUpContext} from "../context/context.jsx"
+import  linkUpContext from "../context/context"
 import { useNavigate } from "react-router-dom";
 
 function ModalLoginSign() {
 
-    const { setUser, toggleModal, isOpen,openLoginModal, setOpenLoginModal, loginUser, setLoginUser } = useContext(LinkUpContext);
+   const { setUser, toggleModal, isOpen,openLoginModal, setOpenLoginModal, loginUser, setLoginUser } = useContext(linkUpContext);
    const navigate = useNavigate();
+  //  const [show, setShow] = useState(false);
+
+  //  const handleClose = () => setShow(false);
+  //  const handleShow = () => setShow(true);
+ 
     
     function handleLogout() {
         setUser("")
@@ -24,6 +29,26 @@ function ModalLoginSign() {
         setOpenLoginModal(!openLoginModal);
       };
    return (
+  //   <>
+  //   <Button variant="primary" onClick={handleShow}>
+  //     Launch demo modal
+  //   </Button>
+
+  //   <Modal show={show} onHide={handleClose}>
+  //     <Modal.Header closeButton>
+  //       <Modal.Title>Modal heading</Modal.Title>
+  //     </Modal.Header>
+  //     <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+  //     <Modal.Footer>
+  //       <Button variant="secondary" onClick={handleClose}>
+  //         Close
+  //       </Button>
+  //       <Button variant="primary" onClick={handleClose}>
+  //         Save Changes
+  //       </Button>
+  //     </Modal.Footer>
+  //   </Modal>
+  // </>
     <div>
       {!loginUser && (
         <>
