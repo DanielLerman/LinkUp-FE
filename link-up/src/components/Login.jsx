@@ -5,7 +5,8 @@ import axios from "axios";
 
 
 function Login({onClose}) {
-    const { user, setUser, setLoginUser } = useContext(linkUpContext);
+    const {  setLoginUser } = useContext(linkUpContext);
+
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -16,15 +17,13 @@ function Login({onClose}) {
     const data = { email, password };
     try {
       const res = await axios.post("http://localhost:8080/user/login", data);
-
-     
       alert("User logged successfully");
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("userId", res.data.id);
      
      setLoginUser(true);
     } catch (error) {
-      alert("Login failed");
+      alert(error);
     }
   };
 

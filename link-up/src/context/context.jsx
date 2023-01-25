@@ -2,7 +2,7 @@ import { createContext, useState } from "react";
 const linkUpContext = createContext();
 
 function Provider({ children }) {
-  const [user, setUser] = useState({
+  const [currentUser, setCurrentUser] = useState({
     username: "",
     email: "",
     password: "",
@@ -26,8 +26,8 @@ function Provider({ children }) {
   const [loginUser, setLoginUser] = useState(false);
 
   const valueToShare = {
-    user,
-    setUser,
+    currentUser,
+    setCurrentUser,
     toggleModal,
     setIsOpen,
     isOpen,
