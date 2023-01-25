@@ -4,9 +4,7 @@ import axios from "axios";
 
 function SignUp() {
   const { user, setUser } = useContext(LinkUpContext);
-  const navigate = useNavigate();
  
-
  
   const handleSubmit = async (event) => {
     event.preventDefault();
