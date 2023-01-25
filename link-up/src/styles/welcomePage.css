@@ -1,0 +1,36 @@
+.Logo{
+    /* height:50vh ; */
+    width: 40rem;
+    margin: auto;
+
+}
+
+.welcomeHeader {
+    font-family:'Dosis';
+    text-shadow: 3px 0 #623260 0 3px#623260, 3px 0#623260, 0 3px#623260;;
+    display: flex;
+    color: #623260;
+    align-items:center ;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.WelcomePageContainer {
+    background-color: #E8C1C5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 90.2vh;
+    flex-direction: column;
+}
+
+.LoginSuButton {
+    width: 15vw;
+    height: 7.5vh;
+    font-family: 'Dosis';
+    background-color: #623260;
+    color:#E8C1C5;
+    border-radius: 10px;
+    border: 2px #E8C1C5;
+}
