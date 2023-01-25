@@ -2,18 +2,20 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faUser, faSignOutAlt, faBell} from "@fortawesome/free-solid-svg-icons";
 import logoLink from "../logo-link.png";
-
+import ModalLoginSign from "../pages/ModalLoginSign";
 
 export default function NavBar() {
   return (
     <div>
       <nav className="navbar-container">
+
         <img
           className="navbar-logo"
           src={logoLink}
           alt="Link-logo"
           onClick={() => (window.location.href = "/home")}
         />
+         <ModalLoginSign/>
         <button className="navbar-button">
           <FontAwesomeIcon icon={faUser} title="Settings" 
             onClick={() => (window.location.href = "/settings")} />
