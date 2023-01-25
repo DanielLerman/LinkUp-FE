@@ -2,6 +2,10 @@ import React, { useContext, useState } from "react";
 import linkUpContext from "../context/context.jsx";
 import axios from "axios";
 import "./SignUp.css";
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/salome
 function SignUp({ onClose }) {
   // const { user, setUser } = useContext(linkUpContext);
   const [user, setUser] = useState({
@@ -22,6 +26,10 @@ function SignUp({ onClose }) {
     languages: "",
     confirmPassword: "",
   });
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/salome
   // const [email, setEmail] = useState("");
   // const [password, setPassword] = useState("");
   // const [confirmPassword, setConfirmPassword] = useState("");
@@ -38,6 +46,10 @@ function SignUp({ onClose }) {
   // const [sex, setSex] = useState("");
   // const [smokes, setSmokes] = useState("");
   // const [languages, setLanguages] = useState("");
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/salome
   const handleSubmit = async (event) => {
     event.preventDefault();
     // const data = {
