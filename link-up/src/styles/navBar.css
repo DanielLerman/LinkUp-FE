@@ -1,0 +1,36 @@
+.navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 20px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+    height: 60px;
+}
+
+.navbar-button {
+    color: #D499B9;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 8px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+.navbar-button:hover {
+    font-size: 20px;
+    transition: all 0.3s ease;
+}
+
+.navbar-logo {
+    width: 50px;
+    height: 25px;
+    margin-right: 87%;
+    cursor: pointer;
+}
+
+.navbar-logo:hover {
+    transform: scale(1.2);
+    transition: all 0.3s ease;
+}
