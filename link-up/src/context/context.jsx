@@ -22,8 +22,9 @@ function Provider({ children }) {
   });
   const [isOpen, setIsOpen] = useState(false);
   const [openLoginModal, setOpenLoginModal] = useState(false);
-  const [loginUser, setLoginUser] = useState(false);
   const toggleModal = () => setIsOpen(!isOpen);
+  const [loginUser, setLoginUser] = useState(false);
+
   const valueToShare = {
     user,
     setUser,
