@@ -2,12 +2,10 @@ import React, { useContext, useState } from "react";
 import linkUpContext from "../context/context.jsx";
 import axios from "axios";
 import "./SignUp.css";
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/salome
+
 function SignUp({ onClose }) {
-  // const { user, setUser } = useContext(linkUpContext);
+
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -26,50 +24,10 @@ function SignUp({ onClose }) {
     languages: "",
     confirmPassword: "",
   });
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/salome
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [confirmPassword, setConfirmPassword] = useState("");
-  // const [username, setUsername] = useState("");
-  // const [age, setAge] = useState("");
-  // const [diet, setDiet] = useState("");
-  // const [drinks, setDrinks] = useState("");
-  // const [education, setEducation] = useState("");
-  // const [job, setJob] = useState("");
-  // const [cats, setCats] = useState("");
-  // const [dogs, setDogs] = useState("");
-  // const [religion, setReligion] = useState("");
-  // const [ethnicity, setEthnicity] = useState("");
-  // const [sex, setSex] = useState("");
-  // const [smokes, setSmokes] = useState("");
-  // const [languages, setLanguages] = useState("");
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/salome
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // const data = {
-    //   email,
-    //   password,
-    //   username,
-    //   age,
-    //   diet,
-    //   drinks,
-    //   education,
-    //   job,
-    //   cats,
-    //   dogs,
-    //   religion,
-    //   ethnicity,
-    //   sex,
-    //   smokes,
-    //   languages,
-    //   confirmPassword,
-    // };
+
     console.log(user);
     try {
       const response = await axios.post(

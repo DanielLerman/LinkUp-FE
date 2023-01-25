@@ -8,7 +8,7 @@ export default function NavBar() {
   return (
  <>
       <nav className="navbar-container">
-<<<<<<< HEAD
+
         <NavLink activeclassname="active" to="/"><img   className="navbar-logo" src={logoLink}/></NavLink>
         {/* <img
           className="navbar-logo"
@@ -37,25 +37,8 @@ export default function NavBar() {
           <FontAwesomeIcon icon={faBell} title="Notifications" />
           <span className="notification-count">3</span>
         </button> */} 
-=======
-        <img
-          className="navbar-logo"
-          src={logoLink}
-          alt="Link-logo"
-          onClick={() => (window.location.href = "/")}
-        />
-        <button className="navbar-button">
-          <FontAwesomeIcon icon={faUser} title="Settings" 
-            onClick={() => (window.location.href = "/settings")} />
-        </button>
-        <button className="navbar-button">
-          <FontAwesomeIcon icon={faSignOutAlt} title="Logout" />
-        </button>
-        <button className="navbar-button">
-          <FontAwesomeIcon icon={faBell} title="Notifications" />
-          <span className="notification-count">3</span>
-        </button>
->>>>>>> origin/ethan
+
+
       </nav>
       </>
   
