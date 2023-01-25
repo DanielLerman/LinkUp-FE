@@ -14,7 +14,7 @@ function App() {
     <BrowserRouter>
 
      <NavBar/>
-     <ModalLoginSign/>
+   
      <Routes>
      <Route path="/" element={<HomePage />} /> 
      </Routes>
