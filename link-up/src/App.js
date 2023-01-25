@@ -5,6 +5,7 @@ import linkUpContext from "./context/context";
 import HomePage from "./pages/HomePage";
 import NavBar from "./components/NavBar";
 import WelcomePage from "./pages/WelcomePage";
+import index from './index.css'
 // import ModalLoginSign from "./pages/ModalLoginSign";
 
 
@@ -13,9 +14,7 @@ import WelcomePage from "./pages/WelcomePage";
 function App() {
   return (
     <BrowserRouter>
-    {/* <ModalLoginSign/> */}
      <NavBar/>
-   
      <Routes>
       <Route path="/" element={<WelcomePage/>}/>
      <Route path="/home" element={<HomePage />} /> 

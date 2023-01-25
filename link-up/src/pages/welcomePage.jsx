@@ -6,12 +6,6 @@ import { useState , useEffect} from 'react';
 
 
 const WelcomePage = () => {
- const [visible, setVisible]= useState(true)
- useEffect(()=> {
-    setTimeout(()=> {
-        setVisible(false);
-    },3000);
- }, []);
   return (
     <div className='WelcomePageContainer'>
         <div className='welcomeHeader'  >

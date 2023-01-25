@@ -1,20 +1,32 @@
 
-.home-page{
-background-color: #d499bd;
-width: 100%;
-height: 100vh;
+*{
+    margin:0 ;
+    padding: 0;
+}
+body, html{
+   height: 100vh;
+   width: 100%;
+  
+    
+}
 
+
+
+.home-page{
+
+height: 100%;
 }
 .user-card{
-    width: 80%;
+    border: solid black;  
+}
+.user-inner-card{
+    width: 100%;
     border: solid black;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    
 }
 .user-profile-img{
     width: 100%;
-    height: 100%;
-    
+    height: 100%;    
 }
 .user-name, .user-age{
 font-family: 'Fredoka One', cursive;
@@ -36,7 +48,7 @@ letter-spacing: 1px;
 
 .user-info{
     align-items: center;
-    position: relative;
+    /* position: relative;
     top: -4rem;
-    right: -4rem;
+    right: -4rem; */
 }
