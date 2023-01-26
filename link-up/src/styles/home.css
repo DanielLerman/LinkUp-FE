@@ -21,17 +21,26 @@ html,
 }
 .user-inner-card {
   /* border: solid rgb(38, 164, 116); */
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
+  height: 100vh;
 }
 .user-profile-img  {
   /* width: 100%; */
   height: 60vh;
   object-fit: cover;
-  
-  
-  
+    
 }
-
+.user-about{
+/* border: solid black; */
+font-family: 'Heebo', sans-serif;
+color: #666666;
+font-weight: bolder;
+margin-top:0.8rem;
+padding: 0.3rem;
+}
+.text-box{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
 .user-name,
 .user-age {
   font-family: "Fredoka One", cursive;
@@ -56,4 +65,7 @@ html,
   position: relative;
   top: -4rem;
   right: -7rem;
+}
+.user-info-display{
+    border: solid black;
 }
