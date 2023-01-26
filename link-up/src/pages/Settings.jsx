@@ -2,8 +2,8 @@ import React, { useState, useContext } from "react";
 // import axios from 'axios';
 import NavBar from "../components/NavBar";
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
+import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEnvelope,
@@ -12,15 +12,9 @@ import {
   faEyeSlash,
   faUnlockAlt,
   faUser,
-  faInfoCircle,
-  faUserCog,
-  faBirthdayCake,
   faUtensils,
-  faGlassMartini,
   faGraduationCap,
-  faUserCircle,
   faBriefcase,
-  faPray,
   faCat,
   faDog,
   faTransgender,
@@ -31,7 +25,7 @@ import {
   faChild,
   faPrayingHands,
 } from "@fortawesome/free-solid-svg-icons";
-// import conetexte for information for users
+// import context for information for users
 
 import "./Settings.css";
 
@@ -78,24 +72,6 @@ export default function Settings() {
     languages: user.languages,
   });
 
-  const [errors, setErrors] = useState({
-    email: "",
-    password: "",
-    confirmPassword: "",
-    age: "",
-    diet: "",
-    drinks: "",
-    education: "",
-    ethnicity: "",
-    job: "",
-    religion: "",
-    cats: "",
-    dogs: "",
-    sex: "",
-    smokes: "",
-    languages: "",
-  });
-
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -104,173 +80,12 @@ export default function Settings() {
     setShowConfirmPassword(!showConfirmPassword);
   };
 
-  const validate = (field, value) => {
-    let emailError = "";
-    let passwordError = "";
-    let confirmPasswordError = "";
-    let ageError = "";
-    let dietError = "";
-    let drinksError = "";
-    let educationError = "";
-    let ethnicityError = "";
-    let jobError = "";
-    let religionError = "";
-    let catsError = "";
-    let dogsError = "";
-    let sexError = "";
-    let smokesError = "";
-    let languagesError = "";
-
-    if (field === "email") {
-      const emailRegex =
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      if (!emailRegex.test(value)) {
-        emailError = "Invalid email address";
-      }
-    }
-
-    if (field === "password") {
-      const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
-      if (!passwordRegex.test(value)) {
-        passwordError = "Password not strong enough";
-      }
-    }
-
-    if (field === "confirmPassword") {
-      if (value !== formData.password) {
-        confirmPasswordError = "Passwords do not match";
-      }
-    }
-
-    if (field === "age") {
-      const ageRegex = /^\d{2}$/;
-      if (!ageRegex.test(value)) {
-        ageError = "Invalid age (must be 2 digits)";
-      }
-    }
-
-    if (field === "diet") {
-      if (
-        !["Vegetarian", "Vegan", "Ketogenic", "Paleo", "Gluten-Free"].includes(
-          value
-        )
-      ) {
-        dietError = "Invalid diet";
-      }
-    }
-
-    if (field === "drinks") {
-      if (!["Socially", "Regularly", "Never"].includes(value)) {
-        drinksError = "Invalid drinks preference";
-      }
-    }
-
-    if (field === "education") {
-      if (
-        ![
-          "High School",
-          "Associate's Degree",
-          "Bachelor's Degree",
-          "Master's Degree",
-          "Doctorate",
-        ].includes(value)
-      ) {
-        educationError = "Invalid education level";
-      }
-    }
-    if (field === "ethnicity") {
-      if (
-        ![
-          "Caucasian",
-          "African American",
-          "Latino/a",
-          "Asian",
-          "Native American",
-          "Other",
-        ].includes(value)
-      ) {
-        ethnicityError = "Invalid ethnicity";
-      }
-    }
-
-    if (field === "job") {
-      if (!value) {
-        jobError = "Invalid job";
-      }
-    }
-
-    if (field === "religion") {
-      if (
-        ![
-          "Christianity",
-          "Islam",
-          "Judaism",
-          "Buddhism",
-          "Hinduism",
-          "Other",
-        ].includes(value)
-      ) {
-        religionError = "Invalid religion";
-      }
-    }
-
-    if (field === "cats") {
-      if (!["Yes", "No"].includes(value)) {
-        catsError = "Invalid cat preference";
-      }
-    }
-
-    if (field === "dogs") {
-      if (!["Yes", "No"].includes(value)) {
-        dogsError = "Invalid dog preference";
-      }
-    }
-
-    if (field === "sex") {
-      if (!["Male", "Female", "Non-binary"].includes(value)) {
-        sexError = "Invalid sex";
-      }
-    }
-
-    if (field === "smokes") {
-      if (!["Yes", "No"].includes(value)) {
-        smokesError = "Invalid smoking preference";
-      }
-    }
-
-    if (field === "languages") {
-      if (!value) {
-        languagesError = "Invalid languages";
-      }
-    }
-
-    setErrors({
-      ...errors,
-      email: emailError,
-      password: passwordError,
-      confirmPassword: confirmPasswordError,
-      age: ageError,
-      diet: dietError,
-      drinks: drinksError,
-      education: educationError,
-      ethnicity: ethnicityError,
-      job: jobError,
-      religion: religionError,
-      cats: catsError,
-      dogs: dogsError,
-      sex: sexError,
-      smokes: smokesError,
-      languages: languagesError,
-    });
-  };
-
   const handleChange = (e) => {
     const { id, value } = e.target;
     setFormData({
       ...formData,
       [id]: value,
     });
-    validate(id, value);
   };
 
   const handleSubmit = (e) => {
@@ -278,29 +93,27 @@ export default function Settings() {
     setFormData({
       ...formData,
     });
-      const requestOptions = {
-        method: "PUT",
-        token: tokenLocal,
-        user: { ...formData },
-      };
-      fetch
-        .put(`http://localhost:8080/user/${user.id}`, requestOptions)
-        .then((response) => {
+    const requestOptions = {
+      method: "PUT",
+      token: tokenLocal,
+      user: { ...formData },
+    };
+    axios.put(`http://localhost:8080/user/${user.id}`, requestOptions)
+      .then((response) => {
+        setServerError("");
+        setSuccess(true);
+        setTimeout(() => {
+          setSuccess(false);
+          window.location.reload();
+        }, 5000);
+      })
+      .catch((error) => {
+        setServerError(error.response.data);
+        setTimeout(() => {
           setServerError("");
-          setSuccess(true);
-          setTimeout(() => {
-            setSuccess(false);
-            window.location.reload();
-          }, 5000);
-        })
-        .catch((error) => {
-          setServerError(error.response.data);
-          setTimeout(() => {
-            setServerError("");
-          }, 7000);
-          console.log(error.response);
-        });
-    }
+        }, 7000);
+        console.log(error.response);
+      });
   };
 
   return (
@@ -338,17 +151,8 @@ export default function Settings() {
               <Form.Control
                 type="email"
                 onChange={handleChange}
-                className={errors.email ? "error-focus" : ""}
                 placeholder={user.email ? user.email : "Enter your email"}
               />
-              <div
-                className="text-profile-settings-error"
-                style={{ display: errors.email ? "block" : "none" }}
-              >
-                <Alert variant="danger" className="text-error-profile-settings">
-                  {errors.email}
-                </Alert>
-              </div>
               <span className="icon-profile">
                 <FontAwesomeIcon icon={faEnvelope} title="Email" />
               </span>
@@ -359,7 +163,6 @@ export default function Settings() {
               <Form.Control
                 type={showPassword ? "text" : "password"}
                 onChange={handleChange}
-                className={errors.password ? "error-focus" : ""}
                 placeholder="Enter a new password"
               />
               <span className="eye-icon" onClick={togglePasswordVisibility}>
@@ -368,12 +171,6 @@ export default function Settings() {
               <span className="icon-profile">
                 <FontAwesomeIcon icon={faUnlockAlt} title="Password" />
               </span>
-              <div
-                className="text-error-profile-settings"
-                style={{ display: errors.password ? "block" : "none" }}
-              >
-                <Alert variant="danger">{errors.password}</Alert>
-              </div>
             </div>
           </Form.Group>
           <Form.Group controlId="confirmPassword">
@@ -381,7 +178,6 @@ export default function Settings() {
               <Form.Control
                 type={showConfirmPassword ? "text" : "password"}
                 onChange={handleChange}
-                className={errors.confirmPassword ? "error-focus" : ""}
                 placeholder="Confirm new password"
               />
               <span
@@ -395,12 +191,6 @@ export default function Settings() {
               <span className="icon-profile">
                 <FontAwesomeIcon icon={faLock} title="Confirm Password" />
               </span>
-              <div
-                className="text-error-profile-settings"
-                style={{ display: errors.confirmPassword ? "block" : "none" }}
-              >
-                <Alert variant="danger">{errors.confirmPassword}</Alert>
-              </div>
             </div>
           </Form.Group>
           <Form.Group controlId="username">
@@ -408,17 +198,10 @@ export default function Settings() {
               <Form.Control
                 type="text"
                 onChange={handleChange}
-                className={errors.username ? "error-focus" : ""}
                 placeholder={
                   user.username ? user.username : "Enter your username"
                 }
               />
-              <div
-                className="text-error-profile-settings"
-                style={{ display: errors.username ? "block" : "none" }}
-              >
-                <Alert variant="danger">{errors.username}</Alert>
-              </div>
               <span className="icon-profile">
                 <FontAwesomeIcon icon={faUser} title="Username" />
               </span>
@@ -429,15 +212,8 @@ export default function Settings() {
               <Form.Control
                 type="number"
                 onChange={handleChange}
-                className={errors.age ? "error-focus" : ""}
                 placeholder={user.age ? user.age : "Enter your age"}
               />
-              <div
-                className="text-error-profile-settings"
-                style={{ display: errors.age ? "block" : "none" }}
-              >
-                <Alert variant="danger">{errors.age}</Alert>
-              </div>
               <span className="icon-profile">
                 <FontAwesomeIcon icon={faCalendar} title="Age" />
               </span>
@@ -446,11 +222,7 @@ export default function Settings() {
 
           <Form.Group controlId="diet" className="diet">
             <div className="input-icon">
-              <Form.Control
-                as="select"
-                onChange={handleChange}
-                className={errors.diet ? "error-focus" : ""}
-              >
+              <Form.Control as="select" onChange={handleChange}>
                 <option value="" disabled selected hidden>
                   Select your diet
                 </option>
@@ -461,12 +233,6 @@ export default function Settings() {
                 <option value="halal">Halal</option>
                 <option value="other">Other</option>
               </Form.Control>
-              <div
-                className="text-error-profile-settings"
-                style={{ display: errors.diet ? "block" : "none" }}
-              >
-                <Alert variant="danger">{errors.diet}</Alert>
-              </div>
               <span className="icon-profile">
                 <FontAwesomeIcon icon={faUtensils} title="Diet" />
               </span>
@@ -474,12 +240,8 @@ export default function Settings() {
           </Form.Group>
           <Form.Group controlId="drinks" className="drinks">
             <div className="input-icon">
-              <Form.Control
-                as="select"
-                onChange={handleChange}
-                className={errors.drinks ? "error-focus" : ""}
-              >
-                <option value="" disabled selected>
+              <Form.Control as="select" onChange={handleChange}>
+                <option value="" disabled selected hidden>
                   Select your drinking habits
                 </option>
                 <option value="very often">Very often</option>
@@ -489,12 +251,6 @@ export default function Settings() {
                 <option value="often">Often</option>
                 <option value="socially">Socially</option>
               </Form.Control>
-              <div
-                className="text-error-profile-settings"
-                style={{ display: errors.drinks ? "block" : "none" }}
-              >
-                <Alert variant="danger">{errors.drinks}</Alert>
-              </div>
               <span className="icon-profile">
                 <FontAwesomeIcon icon={faWineBottle} title="Drinks" />
               </span>
@@ -503,12 +259,8 @@ export default function Settings() {
 
           <Form.Group controlId="education" className="education">
             <div className="input-icon">
-              <Form.Control
-                as="select"
-                onChange={handleChange}
-                className={errors.education ? "error-focus" : ""}
-              >
-                <option value="" disabled selected>
+              <Form.Control as="select" onChange={handleChange}>
+                <option value="" disabled selected hidden>
                   Select your education
                 </option>
                 <option value="high school">High School</option>
@@ -516,12 +268,6 @@ export default function Settings() {
                 <option value="masters program">Masters program</option>
                 <option value="other">Other</option>
               </Form.Control>
-              <div
-                className="text-error-profile-settings"
-                style={{ display: errors.education ? "block" : "none" }}
-              >
-                <Alert variant="danger">{errors.education}</Alert>
-              </div>
               <span className="icon-profile">
                 <FontAwesomeIcon icon={faGraduationCap} title="Education" />
               </span>
@@ -530,12 +276,8 @@ export default function Settings() {
 
           <Form.Group controlId="ethnicity" className="ethnicity">
             <div className="input-icon">
-              <Form.Control
-                as="select"
-                onChange={handleChange}
-                className={errors.ethnicity ? "error-focus" : ""}
-              >
-                <option value="" disabled selected>
+              <Form.Control as="select" onChange={handleChange}>
+                <option value="" disabled selected hidden>
                   Select your ethnicity
                 </option>
                 <option value="Asian">Asian</option>
@@ -549,12 +291,6 @@ export default function Settings() {
                 <option value="other">Other</option>
                 <option value="European">European</option>
               </Form.Control>
-              <div
-                className="text-error-profile-settings"
-                style={{ display: errors.ethnicity ? "block" : "none" }}
-              >
-                <Alert variant="danger">{errors.ethnicity}</Alert>
-              </div>
               <span className="icon-profile">
                 <FontAwesomeIcon icon={faChild} title="Ethnicity" />
               </span>
@@ -562,12 +298,8 @@ export default function Settings() {
           </Form.Group>
           <Form.Group controlId="job" className="job">
             <div className="input-icon">
-              <Form.Control
-                as="select"
-                onChange={handleChange}
-                className={errors.job ? "error-focus" : ""}
-              >
-                <option value="" disabled selected>
+              <Form.Control as="select" onChange={handleChange}>
+                <option value="" disabled selected hidden>
                   Select your job
                 </option>
                 <option value="art/music/writing">
@@ -598,12 +330,6 @@ export default function Settings() {
                 <option value="other">Other</option>
                 <option value="retired">Retired</option>{" "}
               </Form.Control>
-              <div
-                className="text-error-profile-settings"
-                style={{ display: errors.job ? "block" : "none" }}
-              >
-                <Alert variant="danger">{errors.job}</Alert>
-              </div>
               <span className="icon-profile">
                 <FontAwesomeIcon icon={faBriefcase} title="Job" />
               </span>
@@ -611,12 +337,8 @@ export default function Settings() {
           </Form.Group>
           <Form.Group controlId="religion" className="religion">
             <div className="input-icon">
-              <Form.Control
-                as="select"
-                onChange={handleChange}
-                className={errors.religion ? "error-focus" : ""}
-              >
-                <option value="" disabled selected>
+              <Form.Control as="select" onChange={handleChange}>
+                <option value="" disabled selected hidden>
                   Select your religion
                 </option>
                 <option value="agnosticism">Agnosticism</option>
@@ -629,12 +351,6 @@ export default function Settings() {
                 <option value="Judaism">Judaism</option>
                 <option value="other">Other</option>
               </Form.Control>
-              <div
-                className="text-error-profile-settings"
-                style={{ display: errors.religion ? "block" : "none" }}
-              >
-                <Alert variant="danger">{errors.religion}</Alert>
-              </div>
               <span className="icon-profile">
                 <FontAwesomeIcon icon={faPrayingHands} title="Religion" />
               </span>
@@ -642,24 +358,14 @@ export default function Settings() {
           </Form.Group>
           <Form.Group controlId="cats" className="cats">
             <div className="input-icon">
-              <Form.Control
-                as="select"
-                onChange={handleChange}
-                className={errors.cats ? "error-focus" : ""}
-              >
-                <option value="" disabled selected>
+              <Form.Control as="select" onChange={handleChange}>
+                <option value="" disabled selected hidden>
                   Select your cats
                 </option>
                 <option value="likes">Likes cats</option>
                 <option value="dislikes">Dislikes cats</option>
                 <option value="has">Has cats</option>
               </Form.Control>
-              <div
-                className="text-error-profile-settings"
-                style={{ display: errors.cats ? "block" : "none" }}
-              >
-                <Alert variant="danger">{errors.cats}</Alert>
-              </div>
               <span className="icon-profile">
                 <FontAwesomeIcon icon={faCat} title="Cats" />
               </span>
@@ -667,24 +373,14 @@ export default function Settings() {
           </Form.Group>
           <Form.Group controlId="dogs" className="dogs">
             <div className="input-icon">
-              <Form.Control
-                as="select"
-                onChange={handleChange}
-                className={errors.dogs ? "error-focus" : ""}
-              >
-                <option value="" disabled selected>
+              <Form.Control as="select" onChange={handleChange}>
+                <option value="" disabled selected hidden>
                   Select your dogs
                 </option>
                 <option value="likes">Likes dogs</option>
                 <option value="dislikes">Dislikes dogs</option>
-                <option value="has">Has dogs</option>
+                <option value="has">Hasdogs</option>
               </Form.Control>
-              <div
-                className="text-error-profile-settings"
-                style={{ display: errors.dogs ? "block" : "none" }}
-              >
-                <Alert variant="danger">{errors.dogs}</Alert>
-              </div>
               <span className="icon-profile">
                 <FontAwesomeIcon icon={faDog} title="Dogs" />
               </span>
@@ -692,23 +388,13 @@ export default function Settings() {
           </Form.Group>
           <Form.Group controlId="sex" className="sex">
             <div className="input-icon">
-              <Form.Control
-                as="select"
-                onChange={handleChange}
-                className={errors.sex ? "error-focus" : ""}
-              >
-                <option value="" disabled selected>
+              <Form.Control as="select" onChange={handleChange}>
+                <option value="" disabled selected hidden>
                   Select your sex
                 </option>
                 <option value="m">Male</option>
                 <option value="f">Female</option>
               </Form.Control>
-              <div
-                className="text-error-profile-settings"
-                style={{ display: errors.sex ? "block" : "none" }}
-              >
-                <Alert variant="danger">{errors.sex}</Alert>
-              </div>
               <span className="icon-profile">
                 <FontAwesomeIcon icon={faTransgender} title="Sex" />
               </span>
@@ -716,12 +402,8 @@ export default function Settings() {
           </Form.Group>
           <Form.Group controlId="smoke" className="smoke">
             <div className="input-icon">
-              <Form.Control
-                as="select"
-                onChange={handleChange}
-                className={errors.smoke ? "error-focus" : ""}
-              >
-                <option value="" disabled selected>
+              <Form.Control as="select" onChange={handleChange}>
+                <option value="" disabled selected hidden>
                   Select your smoking habits
                 </option>
                 <option value="yes">Yes</option>
@@ -730,12 +412,6 @@ export default function Settings() {
                 <option value="trying to quit">Trying to quit</option>
                 <option value="when drinking">When drinking</option>
               </Form.Control>
-              <div
-                className="text-error-profile-settings"
-                style={{ display: errors.smoke ? "block" : "none" }}
-              >
-                <Alert variant="danger">{errors.smoke}</Alert>
-              </div>
               <span className="icon-profile">
                 <FontAwesomeIcon icon={faSmoking} title="Smoke" />
               </span>
@@ -743,13 +419,9 @@ export default function Settings() {
           </Form.Group>
           <Form.Group controlId="languages" className="languages">
             <div className="input-icon">
-              <Form.Control
-                as="select"
-                onChange={handleChange}
-                className={errors.languages ? "error-focus" : ""}
-              >
-                <option value="" disabled selected>
-                    Select your languages
+              <Form.Control as="select" onChange={handleChange}>
+                <option value="" disabled selected hidden>
+                  Select your languages
                 </option>
                 {[
                   "English",
@@ -831,22 +503,15 @@ export default function Settings() {
                 ].map((language) => (
                   <option value={language}>{language}</option>
                 ))}
-                      
               </Form.Control>
-              <div
-                className="text-error-profile-settings"
-                style={{ display: errors.languages ? "block" : "none" }}
-              >
-                <Alert variant="danger">{errors.languages}</Alert>
-              </div>
               <span className="icon-profile">
                 <FontAwesomeIcon icon={faLanguage} title="Languages" />
               </span>
             </div>
           </Form.Group>
           <button className="submit-profile-settings" type="submit">
-            Update
-          </button>
+          Update
+        </button>
         </Form>
       </div>
     </div>

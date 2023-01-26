@@ -172,4 +172,20 @@
     cursor: pointer;
     transition: all 0.3s ease;
     cursor: pointer;
+    margin: 0 auto; /* pour centrer horizontalement */
+    align-self: center; /* pour centrer verticalement */
+}
+
+.submit-profile-settings:hover {
+    background-color: #D499B9 !important;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+select option[value=""]:first-child {
+    opacity: 0.5;
+}
+
+.form-control {
+    color: #8b8b8b !important;
 }
