@@ -15,6 +15,7 @@ function App() {
      <NavBar/>
      <Routes>
       <Route path="/" element={<WelcomePage/>}/>
+      <Route path="/settings" element={<Settings/>}/>
      <Route path="/home" element={<HomePage />} /> 
      </Routes>
    </BrowserRouter>
