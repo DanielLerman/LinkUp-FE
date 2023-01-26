@@ -38,10 +38,6 @@ const UserCard = () => {
    </div>
    <TextareaAutosize  className="outline-none text-box rounded-4 border border-light" style={{ width: "100%",resize:"none" }} minRows={8} maxRows={8}/>
    </div>
-
-  
-
-
    </div>
    <div className="user-info d-flex">
     <span className="user-name fw-bold">PETER WEBER</span>
