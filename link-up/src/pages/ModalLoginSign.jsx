@@ -39,8 +39,8 @@ function ModalLoginSign() {
       {!loggedIn && (
         <>
           {!isOpen && (
-            <button className="log-btn" onClick={toggleModal}>
-              Login
+            <button className="LoginSuButton" onClick={toggleModal}>
+              Login / Signup
             </button>
           )}
           {isOpen && (

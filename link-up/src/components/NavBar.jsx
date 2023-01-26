@@ -16,7 +16,7 @@ export default function NavBar() {
           alt="Link-logo"
           onClick={() => (window.location.href = "/home")}
         />  */}
-          <ModalLoginSign/>
+          {/* <ModalLoginSign/> */}
 
        <div className="d-flex">
        <NavLink className="navbar-button " to="/settings" >  < FontAwesomeIcon  icon={faUser} /></NavLink>
