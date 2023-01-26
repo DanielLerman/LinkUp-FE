@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
 }
+
 body,
 html,
 #root {
@@ -15,57 +16,94 @@ html,
   height: 92.1vh;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
+
 .user-card {
   /* border: solid rgb(183, 40, 40); */
   /* height: 100%; */
 }
+
 .user-inner-card {
   /* border: solid rgb(38, 164, 116); */
   /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
-  height: 100vh;
+  height: 70vh;
+  background-color: #E8C1C5;
+  border-radius: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
-.user-profile-img  {
+
+.user-profile-img {
   /* width: 100%; */
   height: 60vh;
   object-fit: cover;
-    
+
 }
-.user-about{
-/* border: solid black; */
-font-family: 'Heebo', sans-serif;
-color: #666666;
-font-weight: bolder;
-margin-top:0.8rem;
-padding: 0.3rem;
+
+.user-about {
+  /* border: solid black; */
+  font-family: 'Heebo', sans-serif;
+  color: #666666;
+  font-weight: bolder;
+  padding: 0.3rem;
+  padding-top: 0;
 }
-.text-box{
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+
+.user-about span {
+  margin-right: 0.9rem;
+  background-color: #62326020;
+  color: #623260;
+  padding: 0.2rem;
+  border-radius: 10px;
+  font-weight: bolder;
+  font-family: 'Heebo', sans-serif;
+  text-transform: uppercase;
 }
-.user-name,
+
+.user-about svg {
+  margin-right: 0.5rem;
+}
+
+.text-box {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
 .user-age {
   font-family: "Fredoka One", cursive;
   color: beige;
   letter-spacing: 1px;
-}
-.user-name {
-  font-size: 1.8rem;
-  -webkit-text-stroke-width: 0.5px;
-  -webkit-text-stroke-color: #ffd700;
-}
-.user-age {
   font-size: 2rem;
-  margin-left: 2rem;
-  color: #ff00ff;
-  -webkit-text-stroke-width: 0.5px;
-  -webkit-text-stroke-color: #800080;
+}
+
+.user-age {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #fff;
+  border: none;
+  font-family: 'Arial Black', sans-serif;
+  font-weight: bolder;
 }
 
 .user-info {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  position: relative;
-  top: -4rem;
-  right: -7rem;
+  justify-content: center;
+  font-family: 'Heebo', sans-serif;
+  color: #623260;
+  font-weight: bolder;
+  padding: 0.5rem;
+  padding-top: 0;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  border-radius: 10px;
+  background-color: #E8C1C5
 }
-.user-info-display{
-    border: solid black;
+
+.user-info-display {
+  background-color: #E8C1C5;
+  color: #623260;
+  border-radius: 10px;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  font-size: 1.2rem;
+
 }

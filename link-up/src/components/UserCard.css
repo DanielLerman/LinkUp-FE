@@ -1,0 +1,49 @@
+.user-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease-in-out;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    margin-top: 50px;
+}
+
+.user-profile-img {
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
+    border-radius: 2%;
+    width: 100%;
+    height: 50%;
+    background-color: #E8C1C5;
+}
+
+.user-name {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #fff;
+    font-family: 'Arial Black', sans-serif;
+}
+
+.icone_language {
+    color: #323962;
+}
+
+.icone_education {
+    color: #326254;
+}
+
+.icone_job {
+    color: #596232;
+}
+
+.icone_child {
+    color: #623232;
+}
+
+.icone_religion {
+    color: #624932;
+}
