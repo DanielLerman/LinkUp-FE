@@ -34,6 +34,7 @@ function SignUp({ onClose }) {
       if (response.status === 200) {
         alert("User created successfully");
         setUser("");
+        onClose();
       }
     } catch (error) {
       {
@@ -287,7 +288,7 @@ function SignUp({ onClose }) {
           "Welsh",
           "Yiddish",
         ].map((language) => (
-          <option value={language}>{language}</option>
+          <option key={language} value={language}>{language}</option>
         ))}
       </select>
       <div className="btns">

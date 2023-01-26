@@ -9,7 +9,7 @@ export default function NavBar() {
  <>
       <nav className="navbar-container">
 
-        <NavLink activeclassname="active" to="/"><img   className="navbar-logo" src={logoLink}/></NavLink>
+        <NavLink activeclassname="active" to="/home"><img   className="navbar-logo" src={logoLink}/></NavLink>
         {/* <img
           className="navbar-logo"
           src={logoLink}
@@ -17,9 +17,10 @@ export default function NavBar() {
           onClick={() => (window.location.href = "/home")}
         />  */}
           <ModalLoginSign/>
+
        <div className="d-flex">
-       <NavLink className="navbar-button " >  < FontAwesomeIcon  icon={faUser} /></NavLink>
-        <NavLink className="navbar-button"> <FontAwesomeIcon icon={faSignOutAlt}/></NavLink>
+       <NavLink className="navbar-button " to="/settings" >  < FontAwesomeIcon  icon={faUser} /></NavLink>
+        <NavLink to="/settings" className="navbar-button"> <FontAwesomeIcon icon={faSignOutAlt}/></NavLink>
         <NavLink className="navbar-button "> <FontAwesomeIcon icon={faBell}/></NavLink>
        </div>
 
