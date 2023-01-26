@@ -118,7 +118,6 @@ export default function Settings() {
 
   return (
     <div className="profile-settings-header">
-      <NavBar />
       <div className="profile-settings">
         <h1 className="title-profile-settings">
           Modify your account information
