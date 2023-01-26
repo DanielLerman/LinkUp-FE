@@ -1,16 +1,23 @@
 
 import React, { useEffect, useContext,useState } from "react";
+import {BrowserRouter, Routes, Route } from 'react-router-dom'
 import linkUpContext from "./context/context";
-import { BrowserRouter, Routes, Route  } from "react-router-dom";
-import Home from "./pages/HomePage";
-import Settings from "./pages/Settings";
+import HomePage from "./pages/HomePage";
+import NavBar from "./components/NavBar";
+import WelcomePage from "./pages/WelcomePage";
+import index from './index.css'
+// import ModalLoginSign from "./pages/ModalLoginSign";
+
+
+
 
 function App() {
   return (
     <BrowserRouter>
-     <Routes>  
-      <Route path="/home" element={<Home />} />
-      <Route path="/settings" element={<Settings />} />
+     <NavBar/>
+     <Routes>
+      <Route path="/" element={<WelcomePage/>}/>
+     <Route path="/home" element={<HomePage />} /> 
      </Routes>
    </BrowserRouter>
   );

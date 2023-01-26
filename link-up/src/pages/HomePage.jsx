@@ -1,10 +1,20 @@
 import React from "react";
-import NavBar from "../components/NavBar";
+import Carousel from 'react-bootstrap/Carousel';
+import UserCard from "../components/UserCard";
 
-export default function HomePage() {
+
+const HomePage = () => {
   return (
-    <div>
-      <NavBar />
-    </div>
-  );
+    <>
+    <Carousel indicators={false} className="home-page">
+     <Carousel.Item className="user-card d-flex flex-column align-items-center">
+    <UserCard />
+ </Carousel.Item>
+
+
+  </Carousel >
+  </>
+  )
 }
+
+export default HomePage
