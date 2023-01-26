@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import linkUpContext from "../context/context.jsx";
 import axios from "axios";
 import "./SignUp.css";
 
@@ -27,8 +26,6 @@ function SignUp({ onClose }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    console.log(user);
     try {
       const response = await axios.post(
         "http://localhost:8080/user/signup",
@@ -50,6 +47,7 @@ function SignUp({ onClose }) {
   return (
     <form onSubmit={handleSubmit}>
       <p>Create an account here</p>
+      <div className="form-first-part">
       <label>
         Username:
         <input
@@ -95,32 +93,42 @@ function SignUp({ onClose }) {
           onChange={handleChange}
         />
       </label>
-      <label htmlFor="diet">diet</label>
+      <label htmlFor="diet">Diet</label>
       <select id="diet" name="diet" onChange={handleChange}>
-        <option value="anything">Mostly Anything</option>
+        <option defaultValue=""></option>
+        <option value="anything">Anything</option>
         <option value="vegetarian">Vegetarian</option>
         <option value="vegan">Vegan</option>
         <option value="kosher">Kosher</option>
         <option value="halal">Halal</option>
         <option value="other">Other</option>
       </select>
-      <label htmlFor="drinks">drinks</label>
+      </div>
+      <div className="form-second-part">
+      <label htmlFor="drinks">Drinks</label>
       <select id="drinks" name="drinks" onChange={handleChange}>
+      <option defaultValue=""></option>
         <option value="very often">Very often</option>
         <option value="often">Often</option>
         <option value="socially">Socially</option>
         <option value="rarely">Rarely</option>
-        <option value="not at all">Not at all</option>
+        <option value=" not at all">Not at all</option>
       </select>
       <label htmlFor="education">Education</label>
       <select id="education" name="education" onChange={handleChange}>
+      <option defaultValue=""></option>
         <option value="high school">High School</option>
-        <option value="university">University</option>
+        <option value="college/university">College / University</option>
         <option value="masters program">Masters program</option>
         <option value="other">Other</option>
+        <option value="two-year college">Two-year college</option>
+        <option value="ph.d program">Ph.d program</option>
+        <option value="law school">Law school</option>
+        <option value="med school">Med school</option>
       </select>
       <label htmlFor="ethnicity">Ethnicity</label>
       <select id="ethnicity" name="ethnicity" onChange={handleChange}>
+      <option defaultValue=""></option>
         <option value="Asian">Asian</option>
         <option value="Middle Eastern">Middle Eastern</option>
         <option value="Afro-American">Afro-American</option>
@@ -134,8 +142,9 @@ function SignUp({ onClose }) {
       </select>
       <label htmlFor="job">Job</label>
       <select id="job" name="job" onChange={handleChange}>
+      <option defaultValue=""></option>
         <option value="student">Student</option>
-        <option value="art/music/writting">Artistic / Musical / Writer</option>
+        <option value="art/music/writing">Artistic / Musical / Writer</option>
         <option value="banking/finance">Banking / Finance</option>
         <option value="administration">Administration</option>
         <option value="construction">Construction</option>
@@ -157,35 +166,40 @@ function SignUp({ onClose }) {
       </select>
       <label htmlFor="religion">Religion</label>
       <select id="religion" name="religion" onChange={handleChange}>
-        <option value="agnosticism">Agnosticism</option>
-        <option value="atheism">Atheism</option>
+      <option defaultValue=""></option>
+        <option value="Agnosticism">Agnosticism</option>
+        <option value="Atheism">Atheism</option>
         <option value="Buddhism">Buddhism</option>
         <option value="Catholicism">Catholicism</option>
         <option value="Christianity">Christianity</option>
         <option value="Hinduism">Hinduism</option>
         <option value="Islam">Islam</option>
         <option value="Judaism">Judaism</option>
-        <option value="other">Other</option>
+        <option value="Other">Other</option>
       </select>
       <label htmlFor="cats">Cats</label>
       <select id="cats" onChange={handleChange}>
+      <option defaultValue=""></option>
         <option value="likes">Likes cats</option>
         <option value="dislikes">Dislikes cats</option>
         <option value="has">Has cats</option>
       </select>
       <label htmlFor="dogs">Dogs</label>
       <select id="dogs" onChange={handleChange}>
+      <option defaultValue=""></option>
         <option value="likes">Likes dogs</option>
         <option value="dislikes">Dislikes dogs</option>
         <option value="has">Has dogs</option>
       </select>
       <label htmlFor="sex">Sex</label>
       <select id="sex" onChange={handleChange}>
+      <option defaultValue=""></option>
         <option value="f"> Female</option>
         <option value="m"> Male</option>
       </select>
       <label htmlFor="smokes">Smokes</label>
       <select id="smokes" onChange={handleChange}>
+      <option defaultValue=""></option>
         <option value="yes">Yes</option>
         <option value="no">No</option>
         <option value="sometimes">Sometimes</option>
@@ -194,6 +208,7 @@ function SignUp({ onClose }) {
       </select>
       <label htmlFor="languages">Languages</label>
       <select id="languages" onChange={handleChange}>
+      <option defaultValue=""></option>
         {[
           "English",
           "Afrikaans",
@@ -275,11 +290,17 @@ function SignUp({ onClose }) {
           <option value={language}>{language}</option>
         ))}
       </select>
-      <button type="submit">Sign Up</button>
-      <button type="button" onClick={onClose}>
-        Cancel
-      </button>
+      <div className="btns">
+
+<button type="submit">Sign Up</button>
+<button type="button" onClick={onClose}>
+  Cancel
+</button>
+</div>
+      </div>
+
     </form>
+    
   );
 }
 export default SignUp;
