@@ -1,33 +1,7 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
-import Alert from "react-bootstrap/Alert";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 import "./SignUp.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faEnvelope,
-  faLock,
-  faEye,
-  faEyeSlash,
-  faUnlockAlt,
-  faUser,
-  faUtensils,
-  faGraduationCap,
-  faBriefcase,
-  faCat,
-  faDog,
-  faTransgender,
-  faSmoking,
-  faLanguage,
-  faCalendar,
-  faWineBottle,
-  faChild,
-  faPrayingHands,
-} from "@fortawesome/free-solid-svg-icons";
-
 function SignUp({ onClose }) {
-  const [serverError, setServerError] = useState("");
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -46,17 +20,6 @@ function SignUp({ onClose }) {
     languages: "",
     confirmPassword: "",
   });
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
-
-  const toggleConfirmPasswordVisibility = () => {
-    setShowConfirmPassword(!showConfirmPassword);
-  };
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -71,7 +34,7 @@ function SignUp({ onClose }) {
       }
     } catch (error) {
       {
-        setServerError(error.response.data.message);
+        alert(error.response.data.error);
       }
     }
   };
@@ -79,94 +42,64 @@ function SignUp({ onClose }) {
     setUser({ ...user, [event.target.id]: event.target.value });
   };
   return (
-    <Form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <p>Create an account here</p>
-      <div
-        className="text-server-error"
-        style={{ display: serverError ? "block" : "none" }}
-      >
-        <Alert variant="danger" className="text-error-profile-settings">
-          {serverError}
-        </Alert>
-      </div>
       <div className="form-first-part">
-        <Form.Group controlId="firstName">
-          <div className="input-icon">
-            <Form.Control
-              type="text"
-              onChange={handleChange}
-              id="username"
-              value={user.username}
-              placeholder="Enter your username"
-            />
-            <span className="icon-profile">
-              <FontAwesomeIcon icon={faUser} />
-            </span>
-          </div>
-        </Form.Group>
-        <Form.Group controlId="email">
-          <div className="input-icon">
-            <Form.Control
-              type="email"
-              onChange={handleChange}
-              placeholder="Enter your email"
-              value={user.email}
-            />
-            <span className="icon-profile">
-              <FontAwesomeIcon icon={faEnvelope} title="Email" />
-            </span>
-          </div>
-        </Form.Group>
-        <Form.Group controlId="age">
-          <div className="input-icon">
-            <Form.Control
-              type="number"
-              onChange={handleChange}
-              placeholder="Enter your age"
-              value={user.age}
-            />
-            <span className="icon-profile">
-              <FontAwesomeIcon icon={faCalendar} title="Age" />
-            </span>
-          </div>
-        </Form.Group>
-        <Form.Group controlId="password">
-          <div className="input-icon">
-            <Form.Control
-              type={showPassword ? "text" : "password"}
-              onChange={handleChange}
-              placeholder="Enter a new password"
-              value={user.password}
-            />
-            <span className="eye-icon" onClick={togglePasswordVisibility}>
-              <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
-            </span>
-            <span className="icon-profile">
-              <FontAwesomeIcon icon={faUnlockAlt} title="Password" />
-            </span>
-          </div>
-        </Form.Group>
-        <Form.Group controlId="confirmPassword">
-          <div className="input-icon">
-            <Form.Control
-              type={showConfirmPassword ? "text" : "password"}
-              onChange={handleChange}
-              placeholder="Confirm new password"
-              value={user.confirmPassword}
-            />
-            <span
-              className="eye-icon"
-              onClick={toggleConfirmPasswordVisibility}
-            >
-              <FontAwesomeIcon
-                icon={showConfirmPassword ? faEyeSlash : faEye}
-              />
-            </span>
-            <span className="icon-profile">
-              <FontAwesomeIcon icon={faLock} title="Confirm Password" />
-            </span>
-          </div>
-        </Form.Group>
+      <label>
+        Username:
+        <input
+          type="text"
+          id="username"
+          value={user.username}
+          onChange={handleChange}
+        />
+      </label>
+      <label>
+        Email :
+        <input
+          type="email"
+          id="email"
+          value={user.email}
+          onChange={handleChange}
+        />
+      </label>
+      <label>
+        Age:
+        <input
+          type="number"
+          id="age"
+          value={user.age}
+          onChange={handleChange}
+        />
+      </label>
+      <label>
+        Password:
+        <input
+          type="password"
+          id="password"
+          value={user.password}
+          onChange={handleChange}
+        />
+      </label>
+      <label>
+        Confirm Password:
+        <input
+          type="password"
+          id="confirmPassword"
+          value={user.confirmPassword}
+          onChange={handleChange}
+        />
+      </label>
+      <label htmlFor="diet">Diet</label>
+      <select id="diet" name="diet" onChange={handleChange}>
+        <option defaultValue=""></option>
+        <option value="anything">Anything</option>
+        <option value="vegetarian">Vegetarian</option>
+        <option value="vegan">Vegan</option>
+        <option value="kosher">Kosher</option>
+        <option value="halal">Halal</option>
+        <option value="other">Other</option>
+      </select>
       </div>
       <div className="form-second-part">
       <label htmlFor="drinks">Drinks</label>
@@ -355,12 +288,13 @@ function SignUp({ onClose }) {
         ))}
       </select>
       <div className="btns">
-        <Button type="submit" className="submit-btn-signup">Sign Up</Button>
-        <Button type="button" className="cancel-btn-signup" onClick={onClose}>
-          Cancel
-        </Button>
+<button type="submit">Sign Up</button>
+<button type="button" onClick={onClose}>
+  Cancel
+</button>
+</div>
       </div>
-    </Form>
+    </form>
   );
 }
 export default SignUp;
