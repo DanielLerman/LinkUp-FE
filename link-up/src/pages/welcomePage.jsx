@@ -1,11 +1,14 @@
 
-import React from 'react';
+import React , {useContext} from 'react';
 import welcome from '../styles/welcomePage.css'
 import LogoBig from '../LinkUp-LOGO.png';
 import { useState , useEffect} from 'react';
+import linkUpContext from '../context/context';
+import ModalLoginSign from './ModalLoginSign';
 
 
 const WelcomePage = () => {
+  const {toggleModal} = useContext(linkUpContext);
   return (
     <div className='WelcomePageContainer'>
         <div className='welcomeHeader'  >
@@ -16,7 +19,8 @@ const WelcomePage = () => {
        <img src={LogoBig} alt='Logo' className='Logo' />
       </div>
       <div>
-        <button className='LoginSuButton'>Login/Signup</button>
+        <ModalLoginSign/>
+        
       </div>
     </div>
   );
