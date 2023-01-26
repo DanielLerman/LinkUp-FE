@@ -1,35 +1,40 @@
 import React, { useContext } from "react";
 import linkUpContext from "../context/context.jsx";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-
-
-function Login({onClose}) {
-    const {  setLoginUser } = useContext(linkUpContext);
-
+function Login({ onClose }) {
+  const { currentUser, setCurrentUser, setLoginUser } =
+    useContext(linkUpContext);
+    const navigate = useNavigate();
 
   const handleLogin = async (event) => {
     event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;
-    // onClose();
+    onClose();
 
     const data = { email, password };
     try {
       const res = await axios.post("http://localhost:8080/user/login", data);
       alert("User logged successfully");
-      localStorage.setItem("token", res.data.token);
-      localStorage.setItem("userId", res.data.id);
-     
-     setLoginUser(true);
+
+      const user = JSON.stringify(res.data.user);
+      localStorage.setItem("user", user);
+      localStorage.setItem("userId", res.data.user.id);
+  
+      setLoginUser(true);
+      navigate("/home");
     } catch (error) {
       alert(error);
     }
   };
+  
+
+
 
   return (
- 
-    <form    onSubmit={handleLogin}>
+    <form onSubmit={handleLogin}>
       <p>We've missed you!</p>
       <label className="email-label">
         Email:

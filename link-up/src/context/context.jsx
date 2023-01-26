@@ -1,5 +1,8 @@
 import { createContext, useState } from "react";
+import axios from "axios";
+import { useEffect } from "react";
 const linkUpContext = createContext();
+
 
 function Provider({ children }) {
   const [currentUser, setCurrentUser] = useState({
@@ -20,6 +23,7 @@ function Provider({ children }) {
     smokes: "",
     languages: "",
   });
+
   const [isOpen, setIsOpen] = useState(false);
   const [openLoginModal, setOpenLoginModal] = useState(false);
   const toggleModal = () => setIsOpen(!isOpen);
@@ -36,6 +40,19 @@ function Provider({ children }) {
     loginUser,
     setLoginUser,
   };
+  const getUserById = async () => {
+    try {
+      const res = await axios.get("http://localhost:8080/user/id");
+      console.log(res)
+    } catch (error) {
+      alert(error);
+    }
+  };
+  useEffect(()=> {
+   getUserById()
+  
+  }, [])
+
   return (
     <linkUpContext.Provider value={valueToShare}>
       {children}

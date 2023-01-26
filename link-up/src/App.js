@@ -6,8 +6,12 @@ import HomePage from "./pages/HomePage";
 import NavBar from "./components/NavBar";
 import WelcomePage from "./pages/WelcomePage";
 import index from './index.css'
+<<<<<<< HEAD
 import Settings from "./pages/Settings";
 // import ModalLoginSign from "./pages/ModalLoginSign";
+=======
+
+>>>>>>> origin/salome
 
 function App() {
   return (

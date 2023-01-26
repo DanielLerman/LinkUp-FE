@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 function ModalLoginSign() {
 
-   const { setUser, toggleModal, isOpen,openLoginModal, setOpenLoginModal, loginUser, setLoginUser } = useContext(linkUpContext);
+   const { setCurrentUser, setUser, toggleModal, isOpen,openLoginModal, setOpenLoginModal, loginUser, setLoginUser } = useContext(linkUpContext);
    const navigate = useNavigate();
 
  
@@ -25,10 +25,18 @@ function ModalLoginSign() {
       const toggleForm = () => {
         setOpenLoginModal(!openLoginModal);
       };
+      function handleLogout() {
+        setCurrentUser("")
+      localStorage.removeItem("user");
+      localStorage.removeItem("userId");
+      setLoginUser(false);
+        navigate("/");
+      }
+      const loggedIn = localStorage.getItem("userId")
    return (
 
     <div>
-      {!loginUser && (
+      {!loggedIn && (
         <>
           {!isOpen && (
             <button className="log-btn" onClick={toggleModal}>
@@ -53,7 +61,7 @@ function ModalLoginSign() {
           )}
         </>
       )}
-      {loginUser && (
+      {loggedIn && (
         <button className="logout-btn" onClick={handleLogout}>
           Logout
         </button>
