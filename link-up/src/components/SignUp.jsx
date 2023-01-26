@@ -1,10 +1,7 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
 import "./SignUp.css";
-
-
 function SignUp({ onClose }) {
-
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -23,7 +20,6 @@ function SignUp({ onClose }) {
     languages: "",
     confirmPassword: "",
   });
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -292,16 +288,13 @@ function SignUp({ onClose }) {
         ))}
       </select>
       <div className="btns">
-
 <button type="submit">Sign Up</button>
 <button type="button" onClick={onClose}>
   Cancel
 </button>
 </div>
       </div>
-
     </form>
-    
   );
 }
 export default SignUp;

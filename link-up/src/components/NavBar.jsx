@@ -26,7 +26,7 @@ export default function NavBar() {
 
        
 
-       
+
         {/* <button className="navbar-button">
           <FontAwesomeIcon icon={faUser} title="Settings" 
             onClick={() => (window.location.href = "/settings")} />

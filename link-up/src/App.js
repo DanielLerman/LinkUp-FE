@@ -4,13 +4,10 @@ import {BrowserRouter, Routes, Route } from 'react-router-dom'
 import linkUpContext from "./context/context";
 import HomePage from "./pages/HomePage";
 import NavBar from "./components/NavBar";
-import WelcomePage from "./pages/welcomePage";
-import Settings from "./pages/Settings"
+import WelcomePage from "./pages/WelcomePage";
 import index from './index.css'
+import Settings from "./pages/Settings";
 // import ModalLoginSign from "./pages/ModalLoginSign";
-
-
-
 
 function App() {
   return (
@@ -19,7 +16,6 @@ function App() {
      <Routes>
       <Route path="/" element={<WelcomePage/>}/>
      <Route path="/home" element={<HomePage />} /> 
-     <Route path="/settings" element={<Settings />} /> 
      </Routes>
    </BrowserRouter>
   );
