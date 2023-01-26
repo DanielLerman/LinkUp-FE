@@ -218,7 +218,6 @@ export default function Settings() {
               </span>
             </div>
           </Form.Group>
-
           <Form.Group controlId="diet" className="diet">
             <div className="input-icon">
               <Form.Control as="select" onChange={handleChange}>
