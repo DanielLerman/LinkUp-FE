@@ -30,4 +30,17 @@ p {
 }
 form {
     display: flex;
+    flex-direction: column;
+}
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    background-color: #e8c1c5;
+    border-radius: 10px;
+}
+.btns { 
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+
 }

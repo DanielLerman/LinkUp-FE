@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import axios from "axios";
 import "./SignUp.css";
 
+
 function SignUp({ onClose }) {
 
   const [user, setUser] = useState({
@@ -23,44 +24,8 @@ function SignUp({ onClose }) {
     confirmPassword: "",
   });
 
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [confirmPassword, setConfirmPassword] = useState("");
-  // const [username, setUsername] = useState("");
-  // const [age, setAge] = useState("");
-  // const [diet, setDiet] = useState("");
-  // const [drinks, setDrinks] = useState("");
-  // const [education, setEducation] = useState("");
-  // const [job, setJob] = useState("");
-  // const [cats, setCats] = useState("");
-  // const [dogs, setDogs] = useState("");
-  // const [religion, setReligion] = useState("");
-  // const [ethnicity, setEthnicity] = useState("");
-  // const [sex, setSex] = useState("");
-  // const [smokes, setSmokes] = useState("");
-  // const [languages, setLanguages] = useState("");
-
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // const data = {
-    //   email,
-    //   password,
-    //   username,
-    //   age,
-    //   diet,
-    //   drinks,
-    //   education,
-    //   job,
-    //   cats,
-    //   dogs,
-    //   religion,
-    //   ethnicity,
-    //   sex,
-    //   smokes,
-    //   languages,
-    //   confirmPassword,
-    // };
-   
     try {
       const response = await axios.post(
         "http://localhost:8080/user/signup",
@@ -76,7 +41,6 @@ function SignUp({ onClose }) {
       }
     }
   };
-
   const handleChange = (event) => {
     setUser({ ...user, [event.target.id]: event.target.value });
   };
@@ -111,7 +75,6 @@ function SignUp({ onClose }) {
           onChange={handleChange}
         />
       </label>
-
       <label>
         Password:
         <input
@@ -149,17 +112,20 @@ function SignUp({ onClose }) {
         <option value="often">Often</option>
         <option value="socially">Socially</option>
         <option value="rarely">Rarely</option>
-        <option value="not at all">Not at all</option>
+        <option value=" not at all">Not at all</option>
       </select>
       <label htmlFor="education">Education</label>
       <select id="education" name="education" onChange={handleChange}>
       <option defaultValue=""></option>
         <option value="high school">High School</option>
-        <option value="university">University</option>
+        <option value="college/university">College / University</option>
         <option value="masters program">Masters program</option>
         <option value="other">Other</option>
+        <option value="two-year college">Two-year college</option>
+        <option value="ph.d program">Ph.d program</option>
+        <option value="law school">Law school</option>
+        <option value="med school">Med school</option>
       </select>
-
       <label htmlFor="ethnicity">Ethnicity</label>
       <select id="ethnicity" name="ethnicity" onChange={handleChange}>
       <option defaultValue=""></option>
@@ -201,15 +167,15 @@ function SignUp({ onClose }) {
       <label htmlFor="religion">Religion</label>
       <select id="religion" name="religion" onChange={handleChange}>
       <option defaultValue=""></option>
-        <option value="agnosticism">Agnosticism</option>
-        <option value="atheism">Atheism</option>
+        <option value="Agnosticism">Agnosticism</option>
+        <option value="Atheism">Atheism</option>
         <option value="Buddhism">Buddhism</option>
         <option value="Catholicism">Catholicism</option>
         <option value="Christianity">Christianity</option>
         <option value="Hinduism">Hinduism</option>
         <option value="Islam">Islam</option>
         <option value="Judaism">Judaism</option>
-        <option value="other">Other</option>
+        <option value="Other">Other</option>
       </select>
       <label htmlFor="cats">Cats</label>
       <select id="cats" onChange={handleChange}>
@@ -324,13 +290,17 @@ function SignUp({ onClose }) {
           <option value={language}>{language}</option>
         ))}
       </select>
+      <div className="btns">
+
+<button type="submit">Sign Up</button>
+<button type="button" onClick={onClose}>
+  Cancel
+</button>
+</div>
       </div>
 
-      <button type="submit">Sign Up</button>
-      <button type="button" onClick={onClose}>
-        Cancel
-      </button>
     </form>
+    
   );
 }
 export default SignUp;
