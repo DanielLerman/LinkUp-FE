@@ -9,7 +9,7 @@ export default function NavBar() {
  <>
       <nav className="navbar-container">
 
-        <NavLink activeclassname="active" to="/"><img   className="navbar-logo" src={logoLink}/></NavLink>
+        <NavLink activeclassname="active" to="/home"><img   className="navbar-logo" src={logoLink}/></NavLink>
         {/* <img
           className="navbar-logo"
           src={logoLink}
